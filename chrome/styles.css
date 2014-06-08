@@ -1,0 +1,37 @@
+div#emblem-editor-extended-layer-info-container {
+    display: none;
+    position: absolute;
+    right: -252px;
+}
+
+ul.emblem-editor-extended-list > li > label {
+    display: inline-block;
+    width: 60px;
+}
+
+input#emblem-editor-extended-background-image-file {
+    width: 200px;
+}
+
+div#emblem-editor-extended-code {
+    display: none;
+    margin-bottom: 0.5em;
+}
+
+div#emblem-editor-extended-code > ul > li {
+    float: right;
+}
+
+div#emblem-editor-extended-code > ul > li:last-of-type {
+    clear: right;
+}
+
+div#emblem-editor-extended-code > ul > li > textarea {
+    resize: none;
+}
+
+.emblem-editor-extended-select {
+    float: left;
+    width: 10px;
+    height: 10px;
+}
