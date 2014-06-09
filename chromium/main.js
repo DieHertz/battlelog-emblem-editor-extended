@@ -149,6 +149,7 @@ function create() {
             try {
                 var emblemCode = emblemCodeTextArea.val();
                 emblemCode = emblemCode.replace('emblem.emblem.load(', '').replace(');', '');
+                canvas.clear()
                 $emblem.load(JSON.parse(emblemCode));
             } catch (e) {
                 console.log('code provided does not describe an emblem');
