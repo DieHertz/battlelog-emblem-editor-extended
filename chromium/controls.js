@@ -143,7 +143,7 @@ function create_controls() {
         var btnContainer = $('#emblem-save-btn').prepend(buttonHtml)
         btnContainer.on('DOMNodeInserted', function() {
             if (btnContainer.find('button#emblem-action-show').length == 0) {
-                btnContainer.prepend(buttonsHtml)
+                btnContainer.prepend(buttonHtml)
             }
         })
 
