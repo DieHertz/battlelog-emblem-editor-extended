@@ -254,7 +254,7 @@ function create() {
             var el = obj.$layerElement
             if (!el) return
 
-            selected_layers[idx] = select
+            selected_layers[idx] = select && obj.selectable;
             el.find('input.emblem-editor-extended-select').prop('checked', select)
         })
     }
@@ -265,7 +265,7 @@ function create() {
             var el = obj.$layerElement
             if (!el) return
 
-            layers.push(!selected_layers[idx])
+            layers.push(!selected_layers[idx] && obj.selectable)
             el.find('input.emblem-editor-extended-select').prop('checked', layers[idx])
         })
 
@@ -282,6 +282,8 @@ function create() {
 
     //  occurs when object is selected
     canvas.observe('object:selected', function(e) {
+        if (!e.target.selectable) return
+
         if (canvas.getActiveObject() == e.target && canvas.getActiveGroup()) {
             canvas._discardActiveGroup()
             canvas._setActiveObject(e.target)
@@ -302,30 +304,31 @@ function create() {
         clear_selection_checkboxes()
     })
 
-    var selection_hotkeys = function() {
-        var ctrl_a = 1,
-            ctrl_d = 4,
-            ctrl_i = 9
+    var selection_hotkeys = function(event) {
+        var key_a = 65,
+            key_d = 68,
+            key_i = 73
 
         var should_update = false
         if (event.ctrlKey) {
             should_update = true
-            if (event.keyCode == ctrl_a) select_all(true)
-            else if (event.keyCode == ctrl_d) select_all(false)
-            else if (event.keyCode == ctrl_i) select_invert()
+            if (event.keyCode == key_a) select_all(true)
+            else if (event.keyCode == key_d) select_all(false)
+            else if (event.keyCode == key_i) select_invert()
             else should_update = false
         }
 
         if (should_update) {
+            event.preventDefault()
             canvas.deactivateAll()
             group_selected_objects()
             $emblem.render()
             updateLayerInfo()
         }
     }
-    $(document).pageBind('keypress', selection_hotkeys)
+    $(document).pageBind('keydown', selection_hotkeys)
 
-    var transform_hotkeys = function() {
+    var transform_hotkeys = function(event) {
         var target = canvas.getActiveObject() || canvas.getActiveGroup()
         if (!target) return
         var is_group = target instanceof fabric.Group
@@ -395,7 +398,7 @@ function create() {
     }
     $(document).pageBind('keydown', transform_hotkeys)
 
-    var update_layer_info = function() {
+    var update_layer_info = function(event) {
         var key_arrow_left = 37,
             key_arrow_up = 38,
             key_arrow_right = 39,
