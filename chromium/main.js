@@ -122,7 +122,7 @@ function create() {
         emblemCodeButton = emblemCodeDiv.find('button');
     /** Copy emblem code button handler
      */
-    $('button#emblem-action-show').on('click', function() {
+    $('button#emblem-action-show').pageLive('click', function() {
         emblemCodeDiv.slideDown(function() {
             emblemCodeTextArea.focus().select();
         });
@@ -133,7 +133,7 @@ function create() {
             .focus().select();
     });
 
-    $('button#emblem-action-load').on('click', function() {
+    $('button#emblem-action-load').pageLive('click', function() {
         emblemCodeDiv.slideDown(function() {
             emblemCodeTextArea.focus();
         });

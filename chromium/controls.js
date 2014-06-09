@@ -140,7 +140,12 @@ function create_controls() {
             <span>Load Code</span>\
         </button>'
 
-        $('#emblem-save-btn').after(buttonHtml)
+        var btnContainer = $('#emblem-save-btn').prepend(buttonHtml)
+        btnContainer.on('DOMNodeInserted', function() {
+            if (btnContainer.find('button#emblem-action-show').length == 0) {
+                btnContainer.prepend(buttonsHtml)
+            }
+        })
 
         var emblemCodeHtml =
         '<div id="emblem-editor-extended-code" class="clearfix">\
