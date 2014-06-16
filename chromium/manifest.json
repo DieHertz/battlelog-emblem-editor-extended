@@ -3,7 +3,7 @@
 
     "name": "Battlelog Emblem Editor Extended",
     "description": "Adds some useful functionality for emblem editor.",
-    "version": "0.4.5.4",
+    "version": "0.4.5.5",
 
     "permissions": [
         "http://battlelog.battlefield.com/*"

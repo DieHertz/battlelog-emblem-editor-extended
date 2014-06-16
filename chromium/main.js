@@ -127,6 +127,13 @@ function create() {
             emblemCodeTextArea.focus().select();
         });
         emblemCodeButton.attr('data-action', 'show');
+
+        select_all(false)
+        canvas.deactivateAll()
+        group_selected_objects()
+        $emblem.render()
+        updateLayerInfo()
+
         var emblemCode = 'emblem.emblem.load(' + JSON.stringify($emblem.data, null, 2) + ');';
         emblemCodeTextArea.val(emblemCode)
             .attr('disabled', '')
