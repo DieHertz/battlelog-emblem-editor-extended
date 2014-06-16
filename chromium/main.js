@@ -432,7 +432,7 @@ function create() {
 }
 
 function main() {
-    var url_pattern = 'http://battlelog.battlefield.com/bf4/emblem/.*'
+    var url_pattern = 'http://battlelog.battlefield.com/.*?/emblem/.*'
     var matcher = new RegExp('^' + url_pattern + '$', 'i')
     
     if (document.URL.match(matcher)) create()
