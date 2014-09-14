@@ -3,10 +3,11 @@
 
     "name": "Battlelog Emblem Editor Extended",
     "description": "Adds some useful functionality for emblem editor.",
-    "version": "0.4.5.5",
+    "version": "0.4.5.6",
 
     "permissions": [
-        "http://battlelog.battlefield.com/*"
+        "*://battlelog.battlefield.com/*",
+        "*://cte.battlelog.com/*"
     ],
     "icons": {
         "128": "icon_128x128.png",
@@ -14,7 +15,10 @@
     },
 
     "content_scripts": [{
-        "matches": [ "http://battlelog.battlefield.com/*" ],
+        "matches": [
+	    "*://battlelog.battlefield.com/*",
+	    "*://cte.battlelog.com/*"
+        ],
         "js": [ "actions.js", "controls.js", "main.js", "inject.js" ],
         "css": [ "styles.css" ],
         "run_at": "document_end"

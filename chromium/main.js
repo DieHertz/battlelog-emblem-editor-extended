@@ -1,6 +1,6 @@
 function create() {
     create_controls()
- 
+
     var layerActions = $('div.layer-actions');
     var $emblem = emblem.emblem
     var canvas = $emblem.canvas
@@ -439,9 +439,9 @@ function create() {
 }
 
 function main() {
-    var url_pattern = 'http://battlelog.battlefield.com/.*?/emblem/.*'
+    var url_pattern = 'http://(battlelog\.battlefield|cte\.battlelog)\.com/.*?/emblem/.*'
     var matcher = new RegExp('^' + url_pattern + '$', 'i')
-    
+
     if (document.URL.match(matcher)) create()
 
     $(document).on('pageshow', function() {
